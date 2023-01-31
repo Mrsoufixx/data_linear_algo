@@ -1,0 +1,37 @@
+ALGORITHM sum_distinct_hash_table
+VAR
+    et1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m]; 
+    map : HASH_TABLE; 
+    sum, i : INTEGER; 
+BEGIN
+    set1 := [3, 1, 7, 9]; 
+    set2 := [2, 4, 1, 9, 3]; 
+
+FOR i FROM 0 TO n-1 STEP 1 DO
+    IF map.contains(set1[i]) THEN
+    map[set1[i]] := map[set1[i]] + 1;
+    ELSE
+    map[set1[i]] := 1;
+    END_IF
+END_FOR
+FOR i FROM 0 TO m-1 STEP 1 DO
+    IF map.contains(set2[i]) THEN
+    map[set2[i]] := map[set2[i]] + 1;
+    ELSE
+    map[set2[i]] := 1;
+    END_IF
+END_FOR
+
+// initialize sum to 0
+    sum := 0;
+
+// iterate through the constructed map and sum all the elements with count = 1
+FOR key IN map.keys() DO
+    IF map[key] = 1 THEN
+    sum := sum + key;
+    END_IF
+END_FOR
+
+    Write("The sum of distinct elements is: ", sum);
+END
