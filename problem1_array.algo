@@ -1,0 +1,82 @@
+ALGORITHM sum_distinct_array
+VAR
+    set1: ARRAY_OF INTEGER; 
+    set2: ARRAY_OF INTEGER; 
+    distinct: ARRAY_OF INTEGER
+    i, j,k : INTEGER; 
+    sum : INTEGER; 
+    str : STRING;
+BEGIN
+    set1 := [3, 1, 7, 9]; 
+    set2 := [2, 4, 1, 9, 3]; 
+    sum,k := 0; 
+FOR i FROM 0 TO set1.length-1 STEP 1 DO
+    j := 0;
+    WHILE j < set2.length DO
+        IF set1[i] = set2[j] THEN
+        BREAK;
+        END_IF
+    j := j + 1;
+    END_WHILE
+    IF j = set2.length THEN
+    distinct[k++]= set1[i];
+    sum := sum + set1[i];
+
+    END_IF
+END_FOR
+FOR i FROM 0 TO set2.length-1 STEP 1 DO
+    j := 0;
+    WHILE j < set1.length DO
+        IF set2[i] = set1[j] THEN
+        BREAK;
+        END_IF
+    j := j + 1;
+    END_WHILE
+    IF j = set1.length THEN
+    distinct[k++]= set2[i];
+    sum := sum + set2[i];
+    END_IF
+END_FOR
+FOR i FROM 0 TO common.length-1 STEP 1  DO
+    str = str + " " +common[i]+ ",";
+END_FOR
+Write(sum," (distinct elements",str,")");
+//13 (distinct elements 4, 7, 2 )
+END
+
+
+
+
+
+
+
+
+
+
+
+
+// autre facon
+
+let arr1=[3,1,7,9]
+let arr2=[2,4,1,9,3]
+let comun=[]
+let arr3=arr1.concat(arr2)
+let sum = 0
+t
+for(let i=0; i<arr1.length;i++){
+    for(let j=0; j<arr2.length;j++){
+        if(arr1[i] == arr2[j]){
+            common.push(arr1[i])
+        }
+    }
+}
+for(let i=0; i<arr3.length;i++){
+    for(let j=0; j<common.length;j++){
+        if(arr3[i] === common[j]){
+            arr3[i]=0
+        }
+    }
+    sum+=arr3[i] 
+}
+
+console.log(common,arr3,sum);
